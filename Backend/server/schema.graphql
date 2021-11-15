@@ -1,0 +1,33 @@
+scalar GraphQLDate
+
+enum StatusType {
+  New
+  Assigned
+  Fixed
+  Closed
+}
+
+type Customer {
+  _id: ID!
+  id: Int!
+  name: String!
+  mobile: String!
+  timestamp: GraphQLDate!
+}
+
+input CustomerInput {
+  name: String!
+  mobile: String!
+}
+
+##### Top level declarations
+type Query {
+  about: String!
+  waitlist: [Customer!]!
+  getLength: Int!
+}
+type Mutation {
+  setAboutMessage(message: String!): String
+  addCustomer(customer: CustomerInput!): Customer!
+  deleteCustomer(customer: CustomerInput!): String!
+}
